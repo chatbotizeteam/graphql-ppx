@@ -1121,7 +1121,10 @@ let generate_object_input_object = (raw, input_obj_name, fields) => {
                    {
                      pof_desc:
                        Otag(
-                         {txt: to_valid_ident(name), loc: Location.none},
+                         {
+                           txt: raw ? name : to_valid_ident(name),
+                           loc: Location.none,
+                         },
                          generate_arg_type(raw, loc, type_),
                        ),
                      pof_loc: Location.none,

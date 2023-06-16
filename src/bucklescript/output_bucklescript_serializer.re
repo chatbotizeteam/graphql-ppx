@@ -115,7 +115,10 @@ let serialize_fun = (config, loc, fields, type_name) => {
       |> List.map((InputField({name, type_, loc})) => {
            (
              {
-               txt: Longident.parse(to_valid_ident(name)),
+               txt:
+                 Longident.parse(
+                   config.records ? to_valid_ident(name) : name,
+                 ),
                loc: conv_loc(loc),
              },
              [%expr
